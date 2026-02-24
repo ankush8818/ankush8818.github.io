@@ -22,7 +22,6 @@
             color: var(--text-color);
         }
 
-        /* Decorative Header */
         header {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: white;
@@ -32,139 +31,32 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 3rem;
-            letter-spacing: 1px;
-        }
-
-        header h2 {
-            margin: 10px 0 0 0;
-            font-weight: 300;
-            font-size: 1.5rem;
-            color: #e2e8f0;
-        }
-
-        .affiliation {
-            margin-top: 20px;
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        /* Main Container */
-        .container {
-            max-width: 1000px;
-            margin: 2rem auto;
-            padding: 0 20px;
-        }
-
-        /* Section Styling */
-        .section-title {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 10px;
-            margin-bottom: 30px;
-            font-size: 2rem;
-        }
-
-        /* Course Cards */
-        .course-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .course-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-top: 4px solid var(--primary-color);
-        }
-
-        .course-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .course-header {
-            background-color: #edf2f7;
-            padding: 20px;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .course-header h3 {
-            margin: 0;
-            color: var(--primary-color);
-            font-size: 1.4rem;
-        }
-
-        .course-code {
-            display: inline-block;
-            background: var(--accent-color);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .course-content {
-            padding: 20px;
-        }
-
-        /* Data Tables for Assignments & Awards */
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-
-        .data-table th, .data-table td {
-            text-align: left;
-            padding: 10px;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .data-table th {
-            background-color: #f8fafc;
-            color: var(--secondary-color);
-            font-weight: 600;
-        }
-
-        .download-btn {
-            display: inline-block;
-            text-decoration: none;
-            color: var(--secondary-color);
-            font-weight: bold;
-            font-size: 0.9rem;
-            transition: color 0.2s;
-        }
-
-        .download-btn:hover {
-            color: var(--accent-color);
-            text-decoration: underline;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background: var(--primary-color);
-            color: white;
-            margin-top: 40px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .course-grid {
-                grid-template-columns: 1fr;
-            }
-            header h1 { font-size: 2.2rem; }
-        }
+        header h1 { margin: 0; font-size: 3rem; letter-spacing: 1px; }
+        header h2 { margin: 10px 0 0 0; font-weight: 300; font-size: 1.5rem; color: #e2e8f0; }
+        
+        .affiliation { margin-top: 20px; font-size: 1.1rem; font-weight: 500; }
+        .container { max-width: 1000px; margin: 2rem auto; padding: 0 20px; }
+        .section-title { color: var(--primary-color); border-bottom: 2px solid var(--accent-color); padding-bottom: 10px; margin-bottom: 30px; font-size: 2rem; }
+        
+        .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; margin-bottom: 40px; }
+        .course-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; border-top: 4px solid var(--primary-color); }
+        .course-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        
+        .course-header { background-color: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+        .course-header h3 { margin: 0; color: var(--primary-color); font-size: 1.4rem; }
+        .course-code { display: inline-block; background: var(--accent-color); color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.9rem; font-weight: bold; margin-bottom: 10px; }
+        .course-content { padding: 20px; }
+        
+        .data-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .data-table th, .data-table td { text-align: left; padding: 10px; border-bottom: 1px solid #e2e8f0; }
+        .data-table th { background-color: #f8fafc; color: var(--secondary-color); font-weight: 600; }
+        
+        .download-btn { display: inline-block; text-decoration: none; color: var(--secondary-color); font-weight: bold; font-size: 0.9rem; transition: color 0.2s; }
+        .download-btn:hover { color: var(--accent-color); text-decoration: underline; }
+        
+        footer { text-align: center; padding: 2rem; background: var(--primary-color); color: white; margin-top: 40px; }
+        
+        @media (max-width: 768px) { .course-grid { grid-template-columns: 1fr; } header h1 { font-size: 2.2rem; } }
     </style>
 </head>
 <body>
@@ -180,7 +72,6 @@
     </header>
 
     <div class="container">
-        
         <h2 class="section-title">Current Courses & Academic Resources</h2>
 
         <div class="course-grid">
@@ -202,12 +93,12 @@
                         <tr>
                             <td>Assignment 1: Transducers</td>
                             <td>March 10, 2026</td>
-                            <td><a href="#" class="download-btn">Download PDF</a></td>
+                            <td><a href="assignment1_transducers.pdf" class="download-btn" target="_blank">Download PDF</a></td>
                         </tr>
                         <tr>
                             <td>Assignment 2: Bridge Circuits</td>
                             <td>April 05, 2026</td>
-                            <td><a href="#" class="download-btn">Download PDF</a></td>
+                            <td><a href="assignment2_bridge_circuits.pdf" class="download-btn" target="_blank">Download PDF</a></td>
                         </tr>
                     </table>
 
@@ -221,7 +112,7 @@
                         <tr>
                             <td>Mid-Semester Award Sheet</td>
                             <td>Pending</td>
-                            <td><a href="#" class="download-btn">View/Download</a></td>
+                            <td><a href="ecepe615_midsem_awards.pdf" class="download-btn" target="_blank">View/Download</a></td>
                         </tr>
                     </table>
                 </div>
@@ -245,12 +136,12 @@
                         <tr>
                             <td>Assignment 1: Optical Waveguides</td>
                             <td>March 15, 2026</td>
-                            <td><a href="#" class="download-btn">Download PDF</a></td>
+                            <td><a href="assignment1_optical_waveguides.pdf" class="download-btn" target="_blank">Download PDF</a></td>
                         </tr>
                         <tr>
                             <td>Assignment 2: Signal Degradation</td>
                             <td>April 12, 2026</td>
-                            <td><a href="#" class="download-btn">Download PDF</a></td>
+                            <td><a href="assignment2_signal_degradation.pdf" class="download-btn" target="_blank">Download PDF</a></td>
                         </tr>
                     </table>
 
@@ -264,13 +155,12 @@
                         <tr>
                             <td>Mid-Semester Award Sheet</td>
                             <td>Pending</td>
-                            <td><a href="#" class="download-btn">View/Download</a></td>
+                            <td><a href="ecepe616_midsem_awards.pdf" class="download-btn" target="_blank">View/Download</a></td>
                         </tr>
                     </table>
                 </div>
             </div>
         </div>
-
     </div>
 
     <footer>
