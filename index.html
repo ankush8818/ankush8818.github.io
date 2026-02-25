@@ -50,6 +50,13 @@
             50% { transform: translateY(-20px); }
             100% { transform: translateY(-10px); }
         }
+        
+        /* New Animation for Profile Photo bounce in */
+        @keyframes zoomInBounce {
+            0% { transform: scale(0); opacity: 0; }
+            60% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); }
+        }
 
         header {
             /* 4-Color Animated Gradient */
@@ -57,10 +64,23 @@
             background-size: 400% 400%;
             animation: gradientBG 12s ease infinite, fadeInDown 1s ease-out;
             color: white;
-            padding: 4.5rem 2rem;
+            padding: 3rem 2rem 4.5rem 2rem;
             text-align: center;
             border-bottom: 5px solid var(--accent-color);
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        /* --- NEW PROFILE PHOTO STYLES --- */
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%; /* Makes it circular */
+            border: 5px solid white; /* Thick white border to pop against bg */
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            object-fit: cover; /* Ensures photo doesn't stretch */
+            margin: 0 auto 25px auto; /* Center horizontally, margin bottom */
+            display: block;
+            animation: zoomInBounce 1s ease-out; /* Entrance animation */
         }
 
         header h1 { margin: 0; font-size: 3.2rem; letter-spacing: 1px; text-shadow: 2px 3px 6px rgba(0,0,0,0.4); }
@@ -205,6 +225,8 @@
 <body>
 
     <header>
+        <img src="image_0.png" alt="Profile Photo of Dr. Ankush Kapoor" class="profile-photo">
+        
         <h1>Dr. Ankush Kapoor</h1>
         <h2>Associate Professor | Officer In-Charge (Academics)</h2>
         <div class="affiliation">
