@@ -1,25 +1,337 @@
-<h2 class="section-title">Attendance Records (Till February 2026)</h2>
-        <div class="attendance-card">
-            <div class="course-content">
-                <p>Real-time attendance tracking. Students with <strong style="color: #e53e3e;">attendance below 75%</strong> are highlighted in red.</p>
-                <div id="attendance-data" style="overflow-x: auto;">
-                    <p id="loading-text">Synchronizing with Google Sheets...</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Ankush Kapoor | Academic Portfolio</title>
+    <style>
+        :root {
+            /* Hyper-Vibrant Color Palette */
+            --primary-color: #1A2980; 
+            --secondary-color: #26D0CE; 
+            --accent-color: #FF416C; 
+            --accent-hover: #FF4B2B;
+            --bg-color: #f4f7f6;
+            --text-color: #2d3748;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Animated Background Gradient for Header */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Continuous Float Effect for Cards */
+        @keyframes float {
+            0% { transform: translateY(-10px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(-10px); }
+        }
+        
+        /* New Animation for Profile Photo bounce in */
+        @keyframes zoomInBounce {
+            0% { transform: scale(0); opacity: 0; }
+            60% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+
+        header {
+            /* 4-Color Animated Gradient */
+            background: linear-gradient(-45deg, #1A2980, #26D0CE, #8E2DE2, #4A00E0);
+            background-size: 400% 400%;
+            animation: gradientBG 12s ease infinite, fadeInDown 1s ease-out;
+            color: white;
+            padding: 3rem 2rem 4.5rem 2rem;
+            text-align: center;
+            border-bottom: 5px solid var(--accent-color);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        /* --- NEW PROFILE PHOTO STYLES --- */
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%; /* Makes it circular */
+            border: 5px solid white; /* Thick white border to pop against bg */
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            object-fit: cover; /* Ensures photo doesn't stretch */
+            margin: 0 auto 25px auto; /* Center horizontally, margin bottom */
+            display: block;
+            animation: zoomInBounce 1s ease-out; /* Entrance animation */
+        }
+
+        header h1 { margin: 0; font-size: 3.2rem; letter-spacing: 1px; text-shadow: 2px 3px 6px rgba(0,0,0,0.4); }
+        header h2 { margin: 10px 0 0 0; font-weight: 300; font-size: 1.5rem; color: #e0f2fe; text-shadow: 1px 1px 3px rgba(0,0,0,0.2); }
+        
+        .affiliation { margin-top: 20px; font-size: 1.1rem; font-weight: 500; }
+        .container { max-width: 1000px; margin: 2rem auto; padding: 0 20px; }
+        
+        .section-title { 
+            color: var(--primary-color); 
+            border-bottom: 3px solid var(--accent-color); 
+            padding-bottom: 10px; 
+            margin-bottom: 30px; 
+            font-size: 2rem;
+            animation: fadeInDown 1.2s ease-out;
+        }
+        
+        .course-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); 
+            gap: 30px; 
+            margin-bottom: 40px; 
+        }
+
+        .course-card { 
+            background: var(--card-bg); 
+            border-radius: 12px; 
+            overflow: hidden; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08); 
+            transition: transform 0.4s ease, box-shadow 0.4s ease; 
+            border-top: 5px solid var(--secondary-color); 
+            animation: fadeInUp 1s ease-out backwards;
+        }
+        
+        .course-card:nth-child(1) { animation-delay: 0.2s; }
+        .course-card:nth-child(2) { animation-delay: 0.4s; }
+
+        /* Trigger float animation on hover */
+        .course-card:hover { 
+            box-shadow: 0 20px 40px rgba(38, 208, 206, 0.3); 
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .course-header { 
+            background: linear-gradient(to right, #ffffff, #f0f9ff); 
+            padding: 20px; 
+            border-bottom: 1px solid #e2e8f0; 
+        }
+        
+        .course-header h3 { margin: 0; color: var(--primary-color); font-size: 1.4rem; }
+        
+        .course-code { 
+            display: inline-block; 
+            background: linear-gradient(45deg, var(--accent-color), var(--accent-hover)); 
+            color: white; 
+            padding: 5px 12px; 
+            border-radius: 20px; 
+            font-size: 0.9rem; 
+            font-weight: bold; 
+            margin-bottom: 10px; 
+            box-shadow: 0 4px 10px rgba(255, 65, 108, 0.4);
+        }
+
+        .course-content { padding: 20px; }
+        
+        .data-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .data-table th, .data-table td { text-align: left; padding: 12px 10px; border-bottom: 1px solid #e2e8f0; }
+        .data-table th { background-color: #f8fafc; color: var(--primary-color); font-weight: 700; }
+        .data-table tr:hover { background-color: #f1f5f9; transition: background-color 0.3s ease; }
+        
+        /* Animated Shiny Buttons */
+        .download-btn { 
+            display: inline-block; 
+            text-decoration: none; 
+            color: white; 
+            background: linear-gradient(45deg, var(--secondary-color), #00b4db);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: bold; 
+            font-size: 0.85rem; 
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease; 
+            box-shadow: 0 4px 10px rgba(38, 208, 206, 0.3);
+        }
+
+        /* The shine sweep effect */
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .download-btn:hover { 
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 6px 15px rgba(38, 208, 206, 0.5);
+        }
+
+        .download-btn:hover::before {
+            left: 100%;
+        }
+        
+        footer { 
+            text-align: center; 
+            padding: 3rem 2rem; 
+            background: var(--primary-color); 
+            color: white; 
+            margin-top: 60px;
+            border-top: 5px solid var(--accent-color);
+        }
+
+        .visitor-counter {
+            margin-top: 25px;
+            padding: 15px 25px;
+            background: rgba(255,255,255,0.1);
+            display: inline-block;
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
+            animation: fadeInUp 1.5s ease-out backwards;
+            animation-delay: 0.8s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .visitor-counter p {
+            margin: 0 0 10px 0;
+            font-size: 0.95rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #e0f2fe;
+        }
+        
+        @media (max-width: 768px) { 
+            .course-grid { grid-template-columns: 1fr; } 
+            header h1 { font-size: 2.2rem; } 
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="ankush.jpg" alt="Profile Photo of Dr. Ankush Kapoor" class="profile-photo">
+        
+        <h1>Dr. Ankush Kapoor</h1>
+        <h2>Associate Professor | Officer In-Charge (Academics)</h2>
+        <div class="affiliation">
+            Department of Electronics and Communication Engineering (ECE)<br>
+            Atal Bihari Vajpayee Government Institute of Engineering & Technology (ABVGIET)<br>
+            Pragatinagar, Shimla
+        </div>
+    </header>
+
+    <div class="container">
+        <h2 class="section-title">Current Courses & Academic Resources</h2>
+
+        <div class="course-grid">
+            <div class="course-card">
+                <div class="course-header">
+                    <span class="course-code">ECEPE-615(vi)</span>
+                    <h3>Electronic Measurement and Measuring Instruments</h3>
+                </div>
+                <div class="course-content">
+                    <p>Welcome to the portal for Electronic Measurement. Below you will find all necessary course materials, ongoing assignments, and official award sheets for the current semester.</p>
+                    
+                    <h4>Assignments</h4>
+                    <table class="data-table">
+                        <tr>
+                            <th>Title</th>
+                            <th>Deadline</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr>
+                            <td>Assignment 1: Fundamentals of Measurement Systems</td>
+                            <td>February 6, 2026</td>
+                            <td><a href="assignment1_fundamentals of measurement.pdf" class="download-btn" target="_blank">Download PDF</a></td>
+                        </tr>
+                        <tr>
+                            <td>Quiz 1: Analog and Digital Instruments</td>
+                            <td>March 05, 2026</td>
+                            <td><a href="https://wayground.com/join?gc=65931598&source=liveDashboard" class="download-btn" target="_blank">Take Quiz</a></td>
+                        </tr>
+                        <tr>
+                            <td>Assignment 2: Analog and Digital Systems</td>
+                            <td>March 5, 2026</td>
+                            <td><a href="assignment2_Analog and Digital.pdf" class="download-btn" target="_blank">Download PDF</a></td>
+                        </tr>
+                    </table>
+
+                    <h4 style="margin-top: 25px;">Evaluation & Award Sheets</h4>
+                    <table class="data-table">
+                        <tr>
+                            <th>Document</th>
+                            <th>Date Posted</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr>
+                            <td>Mid-Semester Award Sheet</td>
+                            <td>Pending</td>
+                            <td><a href="ecepe615_midsem_awards.pdf" class="download-btn" target="_blank">View/Download</a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="course-header">
+                    <span class="course-code">ECEPE-616(i)</span>
+                    <h3>Fiber Optic Communications</h3>
+                </div>
+                <div class="course-content">
+                    <p>Welcome to the portal for Fiber Optic Communications. Access your lecture resources, laboratory assignments, and academic evaluation sheets below.</p>
+                    
+                    <h4>Assignments</h4>
+                    <table class="data-table">
+                        <tr>
+                            <th>Title</th>
+                            <th>Deadline</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr>
+                            <td>Assignment 1: Fundamentals</td>
+                            <td>Feb 11, 2026</td>
+                            <td><a href="assignment1_Fundamentals.pdf" class="download-btn" target="_blank">Download PDF</a></td>
+                        </tr>
+                        <tr>
+                            <td>Assignment 2: Signal Degradation</td>
+                            <td>April 12, 2026</td>
+                            <td><a href="assignment2_signal_degradation.pdf" class="download-btn" target="_blank">Download PDF</a></td>
+                        </tr>
+                    </table>
+
+                    <h4 style="margin-top: 25px;">Evaluation & Award Sheets</h4>
+                    <table class="data-table">
+                        <tr>
+                            <th>Document</th>
+                            <th>Date Posted</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr>
+                            <td>Mid-Semester Award Sheet</td>
+                            <td>Pending</td>
+                            <td><a href="ecepe616_midsem_awards.pdf" class="download-btn" target="_blank">View/Download</a></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-
-    <style>
-        .low-attendance {
-            background-color: #fff5f5 !important;
-            color: #c53030 !important;
-            font-weight: bold;
-        }
-        /* Mobile optimization for large tables */
-        #attendance-data table {
-            min-width: 600px;
-        }
-    </style>
 
     <footer>
         <p>&copy; 2026 Dr. Ankush Kapoor. All rights reserved.</p>
@@ -31,61 +343,5 @@
         </div>
     </footer>
 
-    <script>
-        const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTqAd3c4bG0GrAj6ypKV8elGH0OhNNvDuwkANnZD-WMC05bxddgN8bG16RxeN3ah5hgKERoM9qqwmSw/pub?gid=358740635&single=true&output=csv";
-
-        async function fetchAttendance() {
-            try {
-                const response = await fetch(sheetUrl);
-                const csvText = await response.text();
-                
-                // Parse CSV rows
-                const rows = csvText.split('\n').map(row => row.split(',')).filter(row => row.length > 1);
-                
-                // Find which column has "Attendance" or "%" in the header
-                const header = rows[0];
-                const attendanceColIndex = header.findIndex(col => 
-                    col.toLowerCase().includes('attendance') || col.includes('%')
-                );
-
-                let tableHtml = '<table class="data-table"><thead><tr>';
-                
-                // Build Header
-                header.forEach(col => {
-                    tableHtml += `<th>${col.trim()}</th>`;
-                });
-                tableHtml += '</tr></thead><tbody>';
-
-                // Build Rows
-                for (let i = 1; i < rows.length; i++) {
-                    const row = rows[i];
-                    let rowClass = "";
-
-                    // Check if attendance is below 75
-                    if (attendanceColIndex !== -1) {
-                        const attendanceValue = parseFloat(row[attendanceColIndex]);
-                        if (!isNaN(attendanceValue) && attendanceValue < 75) {
-                            rowClass = 'class="low-attendance"';
-                        }
-                    }
-
-                    tableHtml += `<tr ${rowClass}>`;
-                    row.forEach(cell => {
-                        tableHtml += `<td>${cell.trim()}</td>`;
-                    });
-                    tableHtml += '</tr>';
-                }
-
-                tableHtml += '</tbody></table>';
-                document.getElementById('attendance-data').innerHTML = tableHtml;
-
-            } catch (error) {
-                console.error('Error fetching data:', error);
-                document.getElementById('attendance-data').innerHTML = 
-                    '<p style="color:var(--accent-color);">Unable to load attendance data. Please check the source sheet.</p>';
-            }
-        }
-
-        window.onload = fetchAttendance;
-    </script>
 </body>
+</html>
