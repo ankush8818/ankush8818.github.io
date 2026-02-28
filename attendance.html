@@ -3,146 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attendance Records | Dr. Ankush Kapoor</title>
+    <title>Full Attendance Records | Dr. Ankush Kapoor</title>
     <style>
         :root {
             --primary-color: #1A2980; 
             --secondary-color: #26D0CE; 
             --accent-color: #FF416C; 
             --bg-color: #f4f7f6;
-            --card-bg: #ffffff;
         }
 
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: var(--bg-color);
-            margin: 0;
-            padding: 0;
-        }
-
-        nav {
-            background: var(--primary-color);
-            padding: 1rem;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 0 15px;
-            padding: 8px 15px;
-            border-radius: 5px;
-            transition: 0.3s;
-        }
-
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg-color); margin: 0; padding: 0; }
+        
+        nav { background: var(--primary-color); padding: 1rem; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        nav a { color: white; text-decoration: none; font-weight: bold; margin: 0 15px; padding: 8px 15px; border-radius: 5px; transition: 0.3s; }
         nav a:hover { background: var(--secondary-color); }
 
-        .container { max-width: 1000px; margin: 2rem auto; padding: 0 20px; }
+        .container { max-width: 1100px; margin: 2rem auto; padding: 0 20px; }
         
-        .header-box {
+        .header-card {
             background: white;
             padding: 2rem;
             border-radius: 12px;
-            border-top: 5px solid var(--accent-color);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-            margin-bottom: 20px;
+            border-left: 8px solid var(--primary-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
         }
 
+        .search-container { margin-bottom: 20px; }
         .search-box {
             width: 100%;
-            padding: 12px;
-            margin: 20px 0;
-            border: 2px solid #e2e8f0;
+            padding: 15px;
+            border: 2px solid #ddd;
             border-radius: 8px;
-            font-size: 1rem;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+        .search-box:focus { border-color: var(--secondary-color); box-shadow: 0 0 8px rgba(38, 208, 206, 0.3); }
+
+        .table-wrapper { 
+            background: white; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            overflow-x: auto; 
         }
 
-        .data-table { 
-            width: 100%; 
-            border-collapse: collapse; 
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-        }
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        th { background: #f8fafc; color: var(--primary-color); font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #edf2f7; }
+        
+        tr:hover { background-color: #fcfcfc; }
 
-        .data-table th, .data-table td { 
-            text-align: left; 
-            padding: 12px; 
-            border-bottom: 1px solid #e2e8f0; 
-        }
-
-        .data-table th { background-color: #f8fafc; color: var(--primary-color); }
-
+        /* Highlight Low Attendance Rows */
         .low-attendance {
             background-color: #fff5f5 !important;
             color: #c53030 !important;
-            font-weight: bold;
+            font-weight: 600;
         }
+        .low-attendance td { border-bottom: 1px solid #feb2b2; }
 
-        .loading { text-align: center; padding: 50px; color: var(--primary-color); font-weight: bold; }
+        .loading { text-align: center; padding: 40px; font-style: italic; color: #666; }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html">← Back to Portfolio</a>
+        <a href="index.html">Main Portfolio</a>
+        <a href="attendance.html" style="border-bottom: 2px solid white;">Attendance View</a>
     </nav>
 
     <div class="container">
-        <div class="header-box">
-            <h1 style="color: var(--primary-color); margin-top: 0;">Attendance Records</h1>
-            <p>Academic Session: Jan - June 2026 (Data till Feb 2026)</p>
-            <p><small>Note: Students with <strong>attendance < 75%</strong> are highlighted in red.</small></p>
-            
-            <input type="text" id="searchInput" class="search-box" placeholder="Search by Name or Roll Number..." onkeyup="filterTable()">
+        <div class="header-card">
+            <h1 style="margin:0; color: var(--primary-color);">Student Attendance Dashboard</h1>
+            <p style="color: #666;">Full list updated in real-time. Use the search bar to find specific records.</p>
         </div>
 
-        <div id="table-container" style="overflow-x: auto;">
-            <div class="loading">Fetching latest data from Google Sheets...</div>
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-box" placeholder="Search by name, roll number, or status..." onkeyup="filterTable()">
+        </div>
+
+        <div class="table-wrapper" id="table-content">
+            <div class="loading">Syncing with Google Database...</div>
         </div>
     </div>
 
     <script>
-        const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTqAd3c4bG0GrAj6ypKV8elGH0OhNNvDuwkANnZD-WMC05bxddgN8bG16RxeN3ah5hgKERoM9qqwmSw/pub?gid=358740635&single=true&output=csv";
+        // Direct link to your published CSV
+        const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTqAd3c4bG0GrAj6ypKV8elGH0OhNNvDuwkANnZD-WMC05bxddgN8bG16RxeN3ah5hgKERoM9qqwmSw/pub?gid=358740635&single=true&output=csv";
 
-        async function loadData() {
+        async function fetchFullSheet() {
             try {
-                const response = await fetch(sheetUrl);
-                const csvData = await response.text();
-                const rows = csvData.split('\n').map(row => row.split(',')).filter(row => row.length > 1);
+                const response = await fetch(csvUrl);
+                const data = await response.text();
                 
+                // Splitting by lines and then by commas
+                const rows = data.split(/\r?\n/).map(row => row.split(','));
+                
+                if (rows.length === 0) throw new Error("No data found");
+
                 const header = rows[0];
-                const attIndex = header.findIndex(h => h.toLowerCase().includes('attendance') || h.includes('%'));
+                // Find "Attendance" column index (case insensitive)
+                const attIdx = header.findIndex(h => h.toLowerCase().includes('attendance') || h.includes('%'));
 
-                let html = '<table class="data-table" id="attTable"><thead><tr>';
-                header.forEach(h => html += `<th>${h.trim()}</th>`);
-                html += '</tr></thead><tbody>';
+                let tableHtml = '<table id="attendanceTable"><thead><tr>';
+                header.forEach(h => tableHtml += `<th>${h.replace(/"/g, '')}</th>`);
+                tableHtml += '</tr></thead><tbody>';
 
+                // Start from index 1 to skip header
                 for (let i = 1; i < rows.length; i++) {
-                    const val = parseFloat(rows[i][attIndex]);
-                    const rowClass = (!isNaN(val) && val < 75) ? 'class="low-attendance"' : '';
-                    html += `<tr ${rowClass}>`;
-                    rows[i].forEach(cell => html += `<td>${cell.trim()}</td>`);
-                    html += '</tr>';
+                    const rowData = rows[i];
+                    if (rowData.length < header.length) continue; // Skip empty rows
+
+                    // Clean the attendance value and check if < 75
+                    let rowStyle = "";
+                    if (attIdx !== -1) {
+                        const score = parseFloat(rowData[attIdx].replace(/[^\d.-]/g, ''));
+                        if (!isNaN(score) && score < 75) {
+                            rowStyle = 'class="low-attendance"';
+                        }
+                    }
+
+                    tableHtml += `<tr ${rowStyle}>`;
+                    rowData.forEach(cell => {
+                        tableHtml += `<td>${cell.replace(/"/g, '').trim()}</td>`;
+                    });
+                    tableHtml += '</tr>';
                 }
-                html += '</tbody></table>';
-                document.getElementById('table-container').innerHTML = html;
-            } catch (e) {
-                document.getElementById('table-container').innerHTML = "Error loading data.";
+
+                tableHtml += '</tbody></table>';
+                document.getElementById('table-content').innerHTML = tableHtml;
+
+            } catch (error) {
+                console.error("Fetch error:", error);
+                document.getElementById('table-content').innerHTML = `<p style="padding:20px; color:red;">Error: Could not load the full sheet. Please ensure the Google Sheet is 'Published to Web' as a CSV.</p>`;
             }
         }
 
         function filterTable() {
-            const input = document.getElementById("searchInput").value.toUpperCase();
-            const rows = document.getElementById("attTable").getElementsByTagName("tr");
-            for (let i = 1; i < rows.length; i++) {
-                rows[i].style.display = rows[i].innerText.toUpperCase().includes(input) ? "" : "none";
+            const input = document.getElementById("searchInput").value.toLowerCase();
+            const table = document.getElementById("attendanceTable");
+            const tr = table.getElementsByTagName("tr");
+
+            for (let i = 1; i < tr.length; i++) {
+                const text = tr[i].textContent.toLowerCase();
+                tr[i].style.display = text.includes(input) ? "" : "none";
             }
         }
 
-        window.onload = loadData;
+        // Initialize on load
+        window.onload = fetchFullSheet;
     </script>
 </body>
 </html>
