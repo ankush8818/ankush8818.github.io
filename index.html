@@ -185,6 +185,69 @@
         .download-btn:hover::before {
             left: 100%;
         }
+
+        /* --- NEW RESEARCH SECTION STYLES --- */
+        .research-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            margin: 40px 0;
+            border-top: 5px solid var(--secondary-color);
+            animation: fadeInUp 1s ease-out backwards;
+            animation-delay: 0.6s;
+        }
+
+        .research-section h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .profile-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .scholar-btn { background-color: #4285F4; }
+        .rg-btn { background-color: #00CCBB; }
+
+        .scholar-badge {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .scholar-badge img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
         
         footer { 
             text-align: center; 
@@ -341,6 +404,32 @@
                 </div>
             </div>
         </div>
+
+        <h2 class="section-title">Research & Publications</h2>
+        <div class="research-section">
+            <h3>Academic Profiles</h3>
+            <p>Explore my publications, citation metrics, and ongoing research projects on the following platforms:</p>
+            
+            <div class="profile-buttons">
+                <a href="https://scholar.google.com/citations?user=2MqsxIEAAAAJ&hl=en" target="_blank" class="btn scholar-btn">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
+                    Google Scholar
+                </a>
+
+                <a href="https://www.researchgate.net/profile/Ankush-Kapoor-2" target="_blank" class="btn rg-btn">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M19.586 0c-.818 0-1.508.19-2.073.565-.564.377-.97.936-1.213 1.68a3.193 3.193 0 0 0-.112.437 8.365 8.365 0 0 0-.078.53 16.35 16.35 0 0 0-.05.727c-.014.282-.023.633-.027 1.054l.006 8.854a.81.81 0 0 1-.25.617.86.86 0 0 1-.634.246H13.62c-.255 0-.46-.082-.613-.246a.81.81 0 0 1-.25-.617v-4.102c0-.62-.116-1.127-.348-1.523-.234-.396-.583-.695-1.048-.895-.465-.2-.997-.3-1.597-.3H6.848V14.5c0 .256.082.46.246.613.164.153.368.23.613.23h1.862c.504 0 .913.125 1.226.375.313.25.534.59.664 1.02.13.43.195.945.195 1.545v4.922c0 .256-.082.46-.246.613-.164.153-.368.23-.613.23H6.848v3.136h4.594c.83 0 1.56-.135 2.19-.404.63-.27 1.15-.65 1.56-1.14.41-.49.72-.88.93-1.17.21-.29.41-.71.6-1.26.19-.55.33-1.12.42-1.71l.053-.356.064-.476c.01-.137.026-.296.046-.477l.076-.856.096-1.168.106-1.226c.01-.154.026-.35.047-.587l.064-.866c.02-.317.043-.653.067-1.008.024-.355.053-.664.085-.926.033-.262.074-.5.124-.714.05-.214.122-.395.215-.543.093-.148.22-.266.38-.354.16-.088.356-.132.588-.132h.93c.256 0 .46.082.614.246.154.164.23.368.23.613v8.525c0 .256.082.46.246.613.164.153.368.23.613.23h2.646c.256 0 .46-.082.613-.246.153-.164.23-.368.23-.613V1.652c0-.256-.082-.46-.246-.613-.164-.153-.368-.23-.613-.23zM4.33 2.138c-.375 0-.71.077-.998.232-.288.155-.515.365-.68.63-.165.265-.247.568-.247.908 0 .346.083.652.247.918.165.266.392.478.68.636.288.158.623.237.998.237h2.518V2.138H4.33z"/></svg>
+                    ResearchGate
+                </a>
+            </div>
+
+            <div class="scholar-badge">
+                <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 10px;">Live Citation Metrics:</p>
+                <a href="https://scholar.google.com/citations?user=2MqsxIEAAAAJ&hl=en" target="_blank">
+                    <img src="https://scholarite.ur.de/api/scholar?user=2MqsxIEAAAAJ&hl=en&theme=light" alt="Google Scholar Metrics Badge">
+                </a>
+            </div>
+        </div>
+
     </div>
 
     <footer>
