@@ -97,6 +97,33 @@
             font-size: 2rem;
             animation: fadeInDown 1.2s ease-out;
         }
+
+        /* --- ABOUT SECTION STYLES --- */
+        .about-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            border-left: 5px solid var(--secondary-color);
+            animation: fadeInUp 1s ease-out backwards;
+            animation-delay: 0.2s;
+        }
+
+        .about-card p {
+            font-size: 1.05rem;
+            color: #4a5568;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .about-card h3 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
         
         .course-grid { 
             display: grid; 
@@ -115,8 +142,8 @@
             animation: fadeInUp 1s ease-out backwards;
         }
         
-        .course-card:nth-child(1) { animation-delay: 0.2s; }
-        .course-card:nth-child(2) { animation-delay: 0.4s; }
+        .course-card:nth-child(1) { animation-delay: 0.4s; }
+        .course-card:nth-child(2) { animation-delay: 0.6s; }
 
         /* Trigger float animation on hover */
         .course-card:hover { 
@@ -186,7 +213,7 @@
             left: 100%;
         }
 
-        /* --- NEW RESEARCH SECTION STYLES --- */
+        /* --- RESEARCH SECTION STYLES --- */
         .research-section {
             background: white;
             padding: 2.5rem;
@@ -196,7 +223,7 @@
             margin: 40px 0;
             border-top: 5px solid var(--secondary-color);
             animation: fadeInUp 1s ease-out backwards;
-            animation-delay: 0.6s;
+            animation-delay: 0.8s;
         }
 
         .research-section h3 {
@@ -266,7 +293,7 @@
             border-radius: 12px;
             backdrop-filter: blur(5px);
             animation: fadeInUp 1.5s ease-out backwards;
-            animation-delay: 0.8s;
+            animation-delay: 1s;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
@@ -305,6 +332,17 @@
     </header>
 
     <div class="container">
+        
+        <h2 class="section-title">Introduction</h2>
+        <div class="about-card">
+            <p>Dr. Ankush Kapoor is an Associate Professor in the Department of Electronics and Communication Engineering (ECE) and the Officer In-Charge (Academics) at Atal Bihari Vajpayee Government Institute of Engineering & Technology (ABVGIET), Pragatinagar. With over 14 years of robust academic, research, and administrative experience, he is deeply committed to elevating the standards of engineering education. Prior to his current tenure, he rendered distinguished services at the Jawaharlal Nehru Government Engineering College (JNGEC), Sundernagar.</p>
+            
+            <p>He is currently based in Pragatinagar, a picturesque educational hub nestled in the serene valley of the Shimla district. Situated along the banks of the river Pabbar, the tranquil environment of Pragatinagar offers an ideal, distraction-free atmosphere conducive to technical learning, innovation, and academic excellence.</p>
+            
+            <h3>Research Interests</h3>
+            <p>Dr. Kapoor's primary research lies in the advanced domains of Antennas and Microwave Engineering. He specializes in the design, development, and spatial gain augmentation of wideband antennas utilizing Frequency Selective Surfaces (FSS) geared specifically for high-speed 5G applications. Alongside his core technical research, he is actively engaged in exploring innovative pedagogical methodologies—including design thinking and additive manufacturing—to bridge the gap between theoretical knowledge and practical industry applications for his students.</p>
+        </div>
+
         <h2 class="section-title">Current Courses & Academic Resources</h2>
 
         <div class="course-grid">
