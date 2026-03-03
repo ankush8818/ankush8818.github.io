@@ -169,24 +169,26 @@
         function filterTable() {
             let input = document.getElementById("searchInput");
             let filter = input.value.toUpperCase();
-            let table = document.getElementById("attendanceTable");
-            let tr = table.getElementsByTagName("tr");
+            
+            // Target the table body directly to safely ignore headers
+            let tbody = document.getElementById("tableBody");
+            let tr = tbody.getElementsByTagName("tr");
 
-            // Loop through all table rows (skipping the header)
-            for (let i = 1; i < tr.length; i++) {
-                // Assuming column 0 is Roll Number and column 1 is Name
+            // Loop through all data rows (starting at 0 since we are in tbody)
+            for (let i = 0; i < tr.length; i++) {
+                // Column 0 is Roll Number, Column 1 is Name
                 let td1 = tr[i].getElementsByTagName("td")[0]; 
                 let td2 = tr[i].getElementsByTagName("td")[1]; 
+
+                // Safely extract text ONLY if the cell actually exists
+                let txtValue1 = td1 ? (td1.textContent || td1.innerText) : "";
+                let txtValue2 = td2 ? (td2.textContent || td2.innerText) : "";
                 
-                if (td1 || td2) {
-                    let txtValue1 = td1.textContent || td1.innerText;
-                    let txtValue2 = td2.textContent || td2.innerText;
-                    
-                    if (txtValue1.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
+                // If either column matches the search query, show the row
+                if (txtValue1.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
                 }
             }
         }
