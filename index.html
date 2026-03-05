@@ -213,6 +213,35 @@
             left: 100%;
         }
 
+        /* --- FEEDBACK SECTION STYLES --- */
+        .feedback-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            border-left: 5px solid var(--accent-color);
+            animation: fadeInUp 1s ease-out backwards;
+            text-align: center;
+        }
+
+        .form-btn { background-color: var(--accent-color); margin: 15px 0 25px 0; }
+        
+        .sheet-container {
+            width: 100%;
+            height: 450px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid #e2e8f0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .sheet-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
         /* --- RESEARCH SECTION STYLES --- */
         .research-section {
             background: white;
@@ -443,6 +472,19 @@
             </div>
         </div>
 
+        <h2 class="section-title">Student Feedback & Reflections</h2>
+        <div class="feedback-section">
+            <p style="font-size: 1.05rem; color: #4a5568; margin-bottom: 15px;">Your feedback is essential for continuous improvement. Please share your mid-semester reflections, thoughts on our gamified learning, and upload your journey video using the form below. Recent responses are dynamically updated in the sheet.</p>
+            
+            <a href="https://forms.gle/frmzQPRC2VSEYUvS8" target="_blank" class="btn form-btn">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" style="margin-right: 8px;"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                Submit Your Feedback Form
+            </a>
+
+            <div class="sheet-container">
+                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRCGKFRLKXF5qErQzFEiFftpZ1VApmVITQwI7TxRHPGiMbZkTIWYdaDBlO9Q0JdElFDmMBpr0hi8Q9k/pubhtml?widget=true&amp;headers=false"></iframe>
+            </div>
+        </div>
         <h2 class="section-title">Research & Publications</h2>
         <div class="research-section">
             <h3>Academic Profiles</h3>
