@@ -5,6 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Courses | Dr. Ankush Kapoor</title>
     <link rel="stylesheet" href="style.css"> 
+    <style>
+        /* Responsive Marks & Evaluation Collapsible Tab */
+        .marks-tab {
+            margin-top: 16px;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .marks-tab[open] {
+            border-color: #cbd5e1;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .marks-tab summary {
+            padding: 10px 14px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #1a2980;
+            cursor: pointer;
+            background-color: #f1f5f9;
+            border-radius: 6px;
+            user-select: none;
+            outline: none;
+        }
+
+        .marks-tab summary:hover {
+            background-color: #e2e8f0;
+            color: #ff416c;
+        }
+
+        .sheet-wrapper {
+            padding: 12px;
+        }
+
+        .sheet-note {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin: 0 0 10px 0;
+        }
+
+        .sheet-wrapper iframe {
+            width: 100%;
+            height: 400px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            display: block;
+        }
+    </style>
 </head>
 <body>
 
@@ -36,10 +87,25 @@
             <p><strong>Program:</strong> B.Tech ECE | <strong>Semester:</strong> 5th</p>
             <p><strong>Overview:</strong> Comprehensive study of antenna parameters, wideband characteristics, and microwave propagation mechanisms essential for modern high-speed communication systems.</p>
             <ul>
-                <li><a href="#">Syllabus & Course Outcomes (COs)</a></li>
+                <li><a href="#">Syllabus &amp; Course Outcomes (COs)</a></li>
                 <li><a href="#">Lecture Notes</a></li>
-                <li><a href="#">Sessional Question Papers (CO & RBT Mapped)</a></li>
+                <li><a href="#">Sessional Question Papers (CO &amp; RBT Mapped)</a></li>
+                <!-- Assignment Question Sheet Link -->
+                <li><a href="assignments/ECEPC-512-Assignment-1.pdf" target="_blank" rel="noopener noreferrer">Assignment-1: Question Sheet (CO &amp; RBT Mapped) 📄</a></li>
             </ul>
+
+            <!-- Real-Time Reflective Marks Embedded Tab -->
+            <details class="marks-tab">
+                <summary>📊 Continuous Assessment &amp; Reflective Marks (Real-Time)</summary>
+                <div class="sheet-wrapper">
+                    <p class="sheet-note">Live evaluation marks for continuous assessment and assignments. Updates automatically from internal records.</p>
+                    <iframe 
+                        src="https://docs.google.com/spreadsheets/d/e/2PACX-REPLACE_WITH_YOUR_PUBLISHED_SHEET_ID/pubhtml?widget=true&amp;headers=false" 
+                        title="ECEPC-512 Assignment &amp; Reflective Marks"
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </details>
         </div>
 
         <div class="course-card">
@@ -47,7 +113,7 @@
             <p><strong>Program:</strong> B.Tech ECE | <strong>Semester:</strong> 5th</p>
             <p><strong>Overview:</strong> Hands-on simulation, design, and performance analysis of various antenna configurations, bridging theoretical concepts with practical RF engineering.</p>
             <ul>
-                <li><a href="#">Lab Manual & Course Outcomes (COs)</a></li>
+                <li><a href="#">Lab Manual &amp; Course Outcomes (COs)</a></li>
                 <li><a href="#">Experiment Schedule</a></li>
                 <li><a href="#">Evaluation Rubrics</a></li>
             </ul>
@@ -64,7 +130,7 @@
         </div>
 
         <div class="course-card">
-            <h3>ECEEE-716P: Major Project-I (Design & Analysis)</h3>
+            <h3>ECEEE-716P: Major Project-I (Design &amp; Analysis)</h3>
             <p><strong>Program:</strong> B.Tech ECE | <strong>Semester:</strong> 7th</p>
             <p><strong>Overview:</strong> Capstone project initiation involving problem formulation, design thinking methodologies, and preliminary system analysis for industry-relevant engineering solutions.</p>
             <ul>
@@ -84,9 +150,9 @@
             <h3>Optical Fiber Communication</h3>
             <p><strong>Program:</strong> B.Tech ECE</p>
             <ul>
-                <li><a href="#">Syllabus & Course Outcomes (COs)</a></li>
+                <li><a href="#">Syllabus &amp; Course Outcomes (COs)</a></li>
                 <li><a href="#">Lecture Notes</a></li>
-                <li><a href="#">Sessional Question Papers (CO & RBT Mapped)</a></li>
+                <li><a href="#">Sessional Question Papers (CO &amp; RBT Mapped)</a></li>
                 <li><a href="#">Solution Keys</a></li>
             </ul>
         </div>
@@ -95,9 +161,9 @@
             <h3>Electronic Measurements</h3>
             <p><strong>Program:</strong> B.Tech ECE</p>
             <ul>
-                <li><a href="#">Syllabus & Course Outcomes (COs)</a></li>
+                <li><a href="#">Syllabus &amp; Course Outcomes (COs)</a></li>
                 <li><a href="#">Lecture Notes</a></li>
-                <li><a href="#">Sessional Question Papers (CO & RBT Mapped)</a></li>
+                <li><a href="#">Sessional Question Papers (CO &amp; RBT Mapped)</a></li>
                 <li><a href="#">Solution Keys</a></li>
             </ul>
         </div>
