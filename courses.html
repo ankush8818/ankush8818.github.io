@@ -119,21 +119,29 @@
                 <li><a href="#">Sessional Question Papers (CO &amp; RBT Mapped)</a></li>
             </ul>
 
-            <!-- Tab 1: Assignment 1 Question Paper Viewer -->
+          <!-- Tab 1: Assignment 1 Question Paper Viewer (Native Object Embed) -->
             <details class="content-tab">
                 <summary>📄 Assignment 1: Question Sheet &amp; Rubrics (Click to Open)</summary>
                 <div class="tab-body">
                     <div class="tab-actions">
                         <span><strong>CO &amp; RBT Mapped</strong> | Due Date: Check Course Schedule</span>
-                        <a href="assignments/ECEPC-512-Assignment-1.pdf.pdf" target="_blank" rel="noopener noreferrer" class="action-btn">
+                        <a href="assignments/ECEPC-512-Assignment-1.pdf" target="_blank" rel="noopener noreferrer" class="action-btn">
                             ↗ Open Fullscreen / Download PDF
                         </a>
                     </div>
-                    <iframe 
-                        src="https://docs.google.com/viewer?url=https://ankush8818.github.io/assignments/ECEPC-512-Assignment-1.pdf.pdf&amp;embedded=true" 
-                        class="tab-frame" 
-                        title="Assignment 1 Question Sheet">
-                    </iframe>
+                    
+                    <object 
+                        data="assignments/ECEPC-512 Assignment.pdf" 
+                        type="application/pdf" 
+                        class="tab-frame">
+                        <!-- Fallback message for mobile browsers that don't support inline PDFs -->
+                        <div style="padding: 20px; text-align: center; background: #fff; border-radius: 6px;">
+                            <p style="color: #475569; margin-bottom: 12px;">Your browser does not support inline PDF viewing.</p>
+                            <a href="assignments/ECEPC-512 Assignment.pdf" target="_blank" rel="noopener noreferrer" class="action-btn">
+                                📥 View / Download Assignment PDF
+                            </a>
+                        </div>
+                    </object>
                 </div>
             </details>
 
