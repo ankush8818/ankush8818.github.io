@@ -6,9 +6,9 @@
     <title>Courses | Dr. Ankush Kapoor</title>
     <link rel="stylesheet" href="style.css"> 
     <style>
-        /* Responsive Marks & Evaluation Collapsible Tab */
-        .marks-tab {
-            margin-top: 16px;
+        /* Interactive Expandable Tabs */
+        .content-tab {
+            margin-top: 12px;
             background-color: #f8fafc;
             border: 1px solid #e2e8f0;
             border-radius: 8px;
@@ -16,12 +16,12 @@
             transition: all 0.2s ease-in-out;
         }
 
-        .marks-tab[open] {
+        .content-tab[open] {
             border-color: #cbd5e1;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         }
 
-        .marks-tab summary {
+        .content-tab summary {
             padding: 10px 14px;
             font-weight: 600;
             font-size: 0.95rem;
@@ -33,13 +33,40 @@
             outline: none;
         }
 
-        .marks-tab summary:hover {
+        .content-tab summary:hover {
             background-color: #e2e8f0;
             color: #ff416c;
         }
 
-        .sheet-wrapper {
+        .tab-body {
             padding: 12px;
+        }
+
+        .tab-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+            color: #475569;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .action-btn {
+            display: inline-block;
+            padding: 6px 12px;
+            background-color: #1a2980;
+            color: #ffffff !important;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        .action-btn:hover {
+            background-color: #ff416c;
         }
 
         .sheet-note {
@@ -48,9 +75,9 @@
             margin: 0 0 10px 0;
         }
 
-        .sheet-wrapper iframe {
+        .tab-frame {
             width: 100%;
-            height: 400px;
+            height: 480px;
             border: 1px solid #cbd5e1;
             border-radius: 6px;
             display: block;
@@ -90,17 +117,34 @@
                 <li><a href="#">Syllabus &amp; Course Outcomes (COs)</a></li>
                 <li><a href="#">Lecture Notes</a></li>
                 <li><a href="#">Sessional Question Papers (CO &amp; RBT Mapped)</a></li>
-                <!-- Assignment Question Sheet Link -->
-                <li><a href="assignments/ECEPC-512-Assignment-1.pdf" target="_blank" rel="noopener noreferrer">Assignment-1: Question Sheet (CO &amp; RBT Mapped) 📄</a></li>
             </ul>
 
-            <!-- Real-Time Reflective Marks Embedded Tab -->
-            <details class="marks-tab">
+            <!-- Tab 1: Assignment 1 Question Paper Viewer -->
+            <details class="content-tab">
+                <summary>📄 Assignment 1: Question Sheet &amp; Rubrics (Click to Open)</summary>
+                <div class="tab-body">
+                    <div class="tab-actions">
+                        <span><strong>CO &amp; RBT Mapped</strong> | Due Date: Check Course Schedule</span>
+                        <a href="assignments/ECEPC-512-Assignment-1.pdf" target="_blank" rel="noopener noreferrer" class="action-btn">
+                            ↗ Open Fullscreen / Download PDF
+                        </a>
+                    </div>
+                    <iframe 
+                        src="assignments/ECEPC-512-Assignment-1.pdf" 
+                        class="tab-frame" 
+                        title="Assignment 1 Question Sheet">
+                    </iframe>
+                </div>
+            </details>
+
+            <!-- Tab 2: Reflective Marks Spreadsheet -->
+            <details class="content-tab">
                 <summary>📊 Continuous Assessment &amp; Reflective Marks (Real-Time)</summary>
-                <div class="sheet-wrapper">
+                <div class="tab-body">
                     <p class="sheet-note">Live evaluation marks for continuous assessment and assignments. Updates automatically from internal records.</p>
                     <iframe 
                         src="https://docs.google.com/spreadsheets/d/e/2PACX-REPLACE_WITH_YOUR_PUBLISHED_SHEET_ID/pubhtml?widget=true&amp;headers=false" 
+                        class="tab-frame"
                         title="ECEPC-512 Assignment &amp; Reflective Marks"
                         loading="lazy">
                     </iframe>
